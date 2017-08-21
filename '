@@ -1,0 +1,129 @@
+<template>
+  <div>
+    <p class="subtitle">SERVER SUMARRY</p>
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="subtitle has-text-centered">Status Server</p>
+          <p class="title has-text-centered">{{ data.username }}</p>
+          <div class="">
+            <article class="">
+              <p class="subtitle has-text-centered">SMS Queue</p>
+              <p class="title has-text-centered">{{ data.sms_queue }}</p>
+            </article>
+          </div>
+          <div class="">
+            <article class="">
+              <p class="subtitle has-text-centered">SMS Queue</p>
+              <p class="title has-text-centered">{{ data.sms_queue }}</p>
+            </article>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="subtitle has-text-centered">USER</p>
+          <p class="title has-text-centered">{{ data.username }}</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="subtitle has-text-centered">SMS Process</p>
+          <p class="title has-text-centered">{{ data.sms_process }}</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="subtitle has-text-centered">SMS Request</p>
+          <p class="title has-text-centered"><span class="title help"><strong>{{ data.sms_request }}</strong></span></p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="subtitle has-text-centered">SMS Sent</p>
+          <p class="title has-text-centered"><span class="title help is-primary"><strong>{{ data.sms_success }}</strong></span></p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="subtitle has-text-centered">SMS Failed</p>
+          <p class="title has-text-centered"><span class="title help is-danger"><strong>{{ data.sms_failed }}</strong></span></p>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<script>
+import Datepicker from 'vue-bulma-datepicker'
+
+export default {
+  components: {
+    Datepicker
+  },
+
+  data () {
+    return {
+      data: {
+        username: null,
+        sms_queue: 0,
+        sms_process: 0,
+        sms_request: 0,
+        sms_success: 0,
+        sms_failed: 0
+      },
+      value: {
+        startDate: null,
+        endDate: null
+      }
+    }
+  },
+
+  computed: {
+    today: function () {
+      let data = new Date()
+      var yyyy = data.getFullYear().toString()
+      var mm = (data.getMonth() + 1).toString()
+      var dd = data.getDate().toString()
+
+      var mmChars = mm.split('')
+      var ddChars = dd.split('')
+
+      return yyyy + '-' + (mmChars[1] ? mm : '0' + mmChars[0]) + '-' + (ddChars[1] ? dd : '0' + ddChars[0])
+    },
+    placeholder () {
+      return `minDate: today, maxDate: ${this.maxDate.getFullYear()}-${this.maxDate.getMonth() + 1}-${this.maxDate.getDate()}`
+    }
+  },
+
+  methods: {
+  },
+
+  mounted () {
+    this.$http({
+      url: 'http://5.189.176.218:8000/dashboard',
+      method: 'get'
+    }).then((response) => {
+      // console.log(response)
+      this.data.username = response.data.username
+      this.data.sms_queue = response.data.sms_queue
+      this.data.sms_process = response.data.sms_pending
+      this.data.sms_request = response.data.sms_request
+      this.data.sms_success = response.data.sms_success
+      this.data.sms_failed = response.data.sms_failed
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+</style>
