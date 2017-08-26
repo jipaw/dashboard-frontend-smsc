@@ -85,7 +85,7 @@
     methods: {
       loadInbox () {
         this.$http({
-          url: 'http://5.189.176.218:8000/inboxes/log',
+          url: this.$baseurl + '/inboxes/log',
           method: 'get'
         }).then((response) => {
           this.inboxes = response.data
@@ -101,7 +101,7 @@
           this.selectedItems.shift()
           this.selectedItems.push(item)
           this.$http({
-            url: 'http://5.189.176.218:8000/sms/setDelete',
+            url: this.$baseurl + '/sms/setDelete',
             method: 'post',
             data: {
               in_stat: this.selectedItems[0].in_stat,
