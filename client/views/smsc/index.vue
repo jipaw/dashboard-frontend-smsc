@@ -264,7 +264,7 @@
       },
       updateData () {
         this.$http({
-          url: 'http://5.189.176.218:10800/smsc',
+          url: this.$baseurl + '/smsc',
           method: 'put',
           data: {
 
@@ -277,7 +277,7 @@
       },
       refreshData () {
         this.$http({
-          url: 'http://5.189.176.218:10800/smsc',
+          url: this.$baseurl + '/smsc',
           method: 'get'
         }).then((response) => {
           this.smsc = _.sortBy(response.data, 'id')
@@ -288,7 +288,7 @@
       updateSmsc: function (item) {
         console.log(item)
         this.$http({
-          url: 'http://5.189.176.218:10800/smsc',
+          url: this.$baseurl + '/smsc',
           method: 'put',
           data: {
             in_seq: item.in_seq,

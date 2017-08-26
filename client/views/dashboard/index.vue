@@ -147,7 +147,7 @@ export default {
   methods: {
     getTrx: function () {
       this.$http({
-        url: 'http://5.189.176.218:10800/dashboard',
+        url: this.$baseurl + '/dashboard',
         method: 'get'
       }).then((response) => {
         // console.log(response)
@@ -158,7 +158,7 @@ export default {
     },
     getLogs: function () {
       this.$http({
-        url: 'http://5.189.176.218:10800/provider/logs',
+        url: this.$baseurl + '/provider/logs',
         method: 'get'
       }).then((response) => {
         let logData = _.map(response.data, (item) => {
@@ -174,7 +174,7 @@ export default {
     },
     restartSMSC: function () {
       this.$http({
-        url: 'http://5.189.176.218:10800/smsc/restart',
+        url: this.$baseurl + '/smsc/restart',
         method: 'get'
       }).then((response) => {
         console.log(response.data)

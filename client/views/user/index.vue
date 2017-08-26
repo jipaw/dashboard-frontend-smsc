@@ -197,7 +197,7 @@
       },
       createUser () {
         this.$http({
-          url: 'http://5.189.176.218:10800/user',
+          url: this.$baseurl + '/user',
           method: 'post',
           data: {
 
@@ -210,7 +210,7 @@
       },
       updateUser () {
         this.$http({
-          url: 'http://5.189.176.218:10800/user',
+          url: this.$baseurl + '/user',
           method: 'put',
           data: {
 
@@ -223,7 +223,7 @@
       },
       deleteUser () {
         this.$http({
-          url: 'http://5.189.176.218:10800/user',
+          url: this.$baseurl + '/user',
           method: 'delete'
         }).then((response) => {
           this.items = response.data
@@ -235,7 +235,7 @@
 
     mounted () {
       this.$http({
-        url: 'http://5.189.176.218:10800/users',
+        url: this.$baseurl + '/users',
         method: 'get'
       }).then((response) => {
         this.items = response.data

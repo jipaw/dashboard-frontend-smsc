@@ -12,6 +12,7 @@ import { TOGGLE_SIDEBAR } from 'vuex-store/mutation-types'
 import { ServerTable } from 'vue-tables-2'
 
 Vue.router = router
+Vue.prototype.$baseurl = 'http://5.189.176.218:10800'
 Vue.use(VueAxios, axios)
 Vue.use(ServerTable, {
   responseAdapter: function (resp) {
@@ -36,7 +37,7 @@ Vue.use(VueAuth, {
   },
   http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
   router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
-  loginData: { url: 'http://5.189.176.218:10800/auth', fetchUser: false },
+  loginData: { url: Vue.prototype.$baseurl + '/auth', fetchUser: false },
   refreshData: { enabled: false }
 })
 

@@ -289,7 +289,7 @@
       autoProcess: function () {
         // console.log(this.values.autoProcess)
         this.$http({
-          url: 'http://5.189.176.218:10800/sms/autoProcess',
+          url: this.$baseurl + '/sms/autoProcess',
           method: 'post',
           data: {
             autoProcess: this.values.autoProcess
@@ -304,7 +304,7 @@
       autoResend: function () {
         // console.log(this.values.autoResend)
         this.$http({
-          url: 'http://5.189.176.218:10800/sms/autoResend',
+          url: this.$baseurl + '/sms/autoResend',
           method: 'post',
           data: {
             autoResend: this.values.autoResend
@@ -319,7 +319,7 @@
       maintenanceMode: function () {
         // console.log(this.values.maintenanceMode)
         this.$http({
-          url: 'http://5.189.176.218:10800/sms/maintenanceMode',
+          url: this.$baseurl + '/sms/maintenanceMode',
           method: 'post',
           data: {
             maintenanceMode: this.values.maintenanceMode
@@ -334,7 +334,7 @@
       passthroughMode: function () {
         console.log(this.values.passthroughMode)
         this.$http({
-          url: 'http://5.189.176.218:10800/sms/passthroughMode',
+          url: this.$baseurl + '/sms/passthroughMode',
           method: 'post',
           data: {
             passthroughMode: this.values.passthroughMode
@@ -358,7 +358,7 @@
     methods: {
       mainSetting: function () {
         this.$http({
-          url: 'http://5.189.176.218:10800/setting/main',
+          url: this.$baseurl + '/setting/main',
           method: 'get'
         }).then((response) => {
           // console.log(response.data)
@@ -372,7 +372,7 @@
       },
       trxSetting: function () {
         this.$http({
-          url: 'http://5.189.176.218:10800/setting/trx',
+          url: this.$baseurl + '/setting/trx',
           method: 'get'
         }).then((response) => {
           // console.log(response.data)
@@ -387,7 +387,7 @@
       sendAllSms: function () {
         console.log(this.values.msisdn)
         this.$http({
-          url: 'http://5.189.176.218:10800/smsc/status',
+          url: this.$baseurl + '/smsc/status',
           method: 'post',
           data: {
             msisdn: this.values.msisdn,
@@ -402,7 +402,7 @@
       sendOneSms: function () {
         console.log(this.device)
         this.$http({
-          url: 'http://5.189.176.218:10800/smsc/status',
+          url: this.$baseurl + '/smsc/status',
           method: 'post',
           data: {
             msisdn: this.values.msisdn,
@@ -417,7 +417,7 @@
       setTrx: function () {
         // console.log(this.values.maintenanceMode)
         this.$http({
-          url: 'http://5.189.176.218:10800/setting/trx',
+          url: this.$baseurl + '/setting/trx',
           method: 'post',
           data: {
             processInterval: this.values.processInterval,
@@ -434,7 +434,7 @@
       },
       refreshDataFailed () {
         this.$http({
-          url: 'http://5.189.176.218:10800/sms-failed',
+          url: this.$baseurl + '/sms-failed',
           method: 'get'
         }).then((response) => {
           this.items2 = response.data
@@ -444,7 +444,7 @@
       },
       refreshDataQueue () {
         this.$http({
-          url: 'http://5.189.176.218:10800/sms-queue',
+          url: this.$baseurl + '/sms-queue',
           method: 'get'
         }).then((response) => {
           this.items1 = response.data
@@ -460,7 +460,7 @@
           this.selectedItems.shift()
           this.selectedItems.push(item)
           this.$http({
-            url: 'http://5.189.176.218:10800/sms/resendId',
+            url: this.$baseurl + '/sms/resendId',
             method: 'post',
             data: {
               in_stat: this.selectedItems[0].in_stat,
@@ -484,7 +484,7 @@
           this.selectedItems.shift()
           this.selectedItems.push(item)
           this.$http({
-            url: 'http://5.189.176.218:10800/sms/setDelete',
+            url: this.$baseurl + '/sms/setDelete',
             method: 'post',
             data: {
               in_stat: this.selectedItems[0].in_stat,
@@ -508,7 +508,7 @@
           this.selectedItems.shift()
           this.selectedItems.push(item)
           this.$http({
-            url: 'http://5.189.176.218:10800/sms/setFailed',
+            url: this.$baseurl + '/sms/setFailed',
             method: 'post',
             data: {
               in_stat: this.selectedItems[0].in_stat,
@@ -526,7 +526,7 @@
       },
       bulkResend () {
         this.$http({
-          url: 'http://5.189.176.218:10800/sms/bulk',
+          url: this.$baseurl + '/sms/bulk',
           method: 'post',
           data: {
             limit: this.numberResend || 5
@@ -543,7 +543,7 @@
     mounted () {
       this.mainSetting()
       // this.$http({
-      //   url: 'http://5.189.176.218:10800/sms-queue',
+      //   url: this.$baseurl + '/sms-queue',
       //   method: 'get'
       // }).then((response) => {
       //   // console.log(response.data)
