@@ -52,6 +52,16 @@ const state = {
       component: lazyLoading('smsc', true)
     },
     {
+      name: 'USSD',
+      path: '/ussd',
+      meta: {
+        auth: true,
+        icon: 'fa-power-off',
+        link: 'ussd/index.vue'
+      },
+      component: lazyLoading('ussd', true)
+    },
+    {
       name: 'User',
       path: '/user',
       meta: {
