@@ -219,7 +219,7 @@
         status: null,
         priority: null,
         statuses: ['online', 'offline'],
-        prefixes: ['["TSEL"]', '["ISAT"]', '["XL"]', '["THREE"]', '["TSEL","XL"]', '["XL","ISAT"]', '["TSEL","XL","ISAT"]', '["ISAT","XL","THREE"]', '["TSEL","XL","ISAT","SMART"]', '["ISAT","XL","THREE","SMART"]']
+        prefixes: ['["TSEL"]', '["ISAT"]', '["XL"]', '["THREE"]', '["TSEL","XL"]', '["XL","ISAT"]', '["TSEL","XL","ISAT"]', '["ISAT","XL","THREE"]', '["XL","ISAT","SMART"]', '["TSEL","XL","ISAT","SMART"]', '["ISAT","XL","THREE","SMART"]']
       }
     },
 
