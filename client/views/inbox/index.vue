@@ -93,7 +93,18 @@
           console.log(error)
         })
       },
+      refreshDataFailed () {
+        this.$http({
+          url: this.$baseurl + '/inboxes/log',
+          method: 'get'
+        }).then((response) => {
+          this.items2 = response.data
+        }).catch((error) => {
+          console.log(error)
+        })
+      },
       deleteInbox (item) {
+        console.log(item)
         var itemIndex = this.selectedItems.indexOf(item)
         if (itemIndex !== -1) {
           this.selectedItems.splice(itemIndex, 1)
@@ -101,17 +112,14 @@
           this.selectedItems.shift()
           this.selectedItems.push(item)
           this.$http({
-            url: this.$baseurl + '/sms/setDelete',
+            url: this.$baseurl + '/sms/deleteInbox',
             method: 'post',
             data: {
-              in_stat: this.selectedItems[0].in_stat,
-              user_name: this.selectedItems[0].user_name,
-              destination: this.selectedItems[0].destination,
-              trx_id: this.selectedItems[0].trx_id
+              id: this.selectedItems[0].id
             }
           }).then((response) => {
             console.log(response)
-            this.refreshDataFailed()
+            this.loadInbox()
           }).catch((error) => {
             console.log(error)
           })
