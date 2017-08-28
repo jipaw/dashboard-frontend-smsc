@@ -32,7 +32,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      title: 'Vue Admin',
+      title: 'SMSC Long Number Gateway',
       filename: 'index.html',
       template: 'index.html',
       inject: true,
