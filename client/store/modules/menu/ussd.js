@@ -10,21 +10,30 @@ export default {
   children: [
     {
       name: 'List Sender',
-      path: '/msisdn',
+      path: '/sender/list',
       meta: {
         auth: true,
-        link: 'smsc/index.vue'
+        link: 'sender/listSender.vue'
       },
-      component: lazyLoading('smsc/index')
+      component: lazyLoading('sender/listSender')
+    },
+    {
+      name: 'Manage Sender',
+      path: '/sender/manage',
+      meta: {
+        auth: true,
+        link: 'sender/manageSender.vue'
+      },
+      component: lazyLoading('sender/manageSender')
     },
     {
       name: 'USSD Command',
-      path: '/ussd',
+      path: '/sender/ussd',
       meta: {
         auth: true,
-        link: 'ussd/index.vue'
+        link: 'sender/ussd.vue'
       },
-      component: lazyLoading('ussd/index')
+      component: lazyLoading('sender/ussd')
     }
   ]
 }
