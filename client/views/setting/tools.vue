@@ -53,13 +53,12 @@
               </article> 
             </div>
           </div>
-        </article>
+      </article>
       </div>
     </div>
 
   </div>
-</template>
-
+</template> 
 <script>
   import { Tabs, TabPane } from 'vue-bulma-tabs'
   import VbSwitch from 'vue-bulma-switch'
@@ -96,66 +95,6 @@
     },
 
     computed: {
-      autoProcess: function () {
-        // console.log(this.values.autoProcess)
-        this.$http({
-          url: this.$baseurl + '/sms/autoProcess',
-          method: 'post',
-          data: {
-            autoProcess: this.values.autoProcess
-          }
-        }).then((response) => {
-          console.log(response)
-        }).catch((error) => {
-          console.log(error)
-        })
-        return this.values.autoProcess
-      },
-      autoResend: function () {
-        // console.log(this.values.autoResend)
-        this.$http({
-          url: this.$baseurl + '/sms/autoResend',
-          method: 'post',
-          data: {
-            autoResend: this.values.autoResend
-          }
-        }).then((response) => {
-          console.log(response)
-        }).catch((error) => {
-          console.log(error)
-        })
-        return this.values.autoResend
-      },
-      maintenanceMode: function () {
-        // console.log(this.values.maintenanceMode)
-        this.$http({
-          url: this.$baseurl + '/sms/maintenanceMode',
-          method: 'post',
-          data: {
-            maintenanceMode: this.values.maintenanceMode
-          }
-        }).then((response) => {
-          console.log(response)
-        }).catch((error) => {
-          console.log(error)
-        })
-        return this.values.maintenanceMode
-      },
-      passthroughMode: function () {
-        console.log(this.values.passthroughMode)
-        this.$http({
-          url: this.$baseurl + '/sms/passthroughMode',
-          method: 'post',
-          data: {
-            passthroughMode: this.values.passthroughMode
-          }
-        }).then((response) => {
-          console.log(response)
-        }).catch((error) => {
-          console.log(error)
-        })
-        return this.values.passthroughMode
-      },
       today () {
         return new Date()
       },
@@ -166,34 +105,6 @@
     watch: {
     },
     methods: {
-      mainSetting: function () {
-        this.$http({
-          url: this.$baseurl + '/setting/main',
-          method: 'get'
-        }).then((response) => {
-          // console.log(response.data)
-          this.values.autoProcess = response.data.autoProcess
-          this.values.autoResend = response.data.autoResend
-          this.values.maintenanceMode = response.data.maintenanceMode
-          this.values.passthroughMode = response.data.passthroughMode
-        }).catch((error) => {
-          console.log(error)
-        })
-      },
-      trxSetting: function () {
-        this.$http({
-          url: this.$baseurl + '/setting/trx',
-          method: 'get'
-        }).then((response) => {
-          // console.log(response.data)
-          this.values.processInterval = response.data.processInterval
-          this.values.resendInterval = response.data.resendInterval
-          this.values.limitProcess = response.data.limitProcess
-          this.values.maxResend = response.data.maxResend
-        }).catch((error) => {
-          console.log(error)
-        })
-      },
       sendAllSms: function () {
         console.log(this.values.msisdn)
         this.$http({
@@ -223,29 +134,10 @@
         }).catch((error) => {
           console.log(error)
         })
-      },
-      setTrx: function () {
-        // console.log(this.values.maintenanceMode)
-        this.$http({
-          url: this.$baseurl + '/setting/trx',
-          method: 'post',
-          data: {
-            processInterval: this.values.processInterval,
-            resendInterval: this.values.resendInterval,
-            limitProcess: this.values.limitProcess,
-            maxResend: this.values.maxResend
-          }
-        }).then((response) => {
-          console.log(response)
-        }).catch((error) => {
-          console.log(error)
-        })
-        return this.values.maintenanceMode
       }
     },
 
     mounted () {
-      this.mainSetting()
     }
   }
 </script>

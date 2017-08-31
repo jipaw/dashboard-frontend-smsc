@@ -25,15 +25,6 @@ export default {
         link: 'outbox/resend.vue'
       },
       component: lazyLoading('outbox/resend')
-    },
-    {
-      name: 'Setting',
-      path: '/setting',
-      meta: {
-        auth: true,
-        link: 'outbox/setting.vue'
-      },
-      component: lazyLoading('outbox/setting')
     }
   ]
 }

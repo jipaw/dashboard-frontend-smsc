@@ -5,6 +5,8 @@ import outbox from './outbox'
 import inbox from './inbox'
 import ussd from './ussd'
 import user from './user'
+import setting from './setting'
+import report from './report'
 // import uifeatures from './uifeatures'
 // import components from './components'
 // import tables from './tables'
@@ -28,7 +30,9 @@ const state = {
     user,
     outbox,
     inbox,
-    ussd
+    ussd,
+    report,
+    setting
     // {
     //   name: 'SMS OUT',
     //   path: '/sms',
